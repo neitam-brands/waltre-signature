@@ -62,6 +62,10 @@
       align-items: start;
     }
 
+    @media (max-width: 900px) {
+      .page { grid-template-columns: 1fr; }
+    }
+
     /* ── PANEL ── */
     .panel {
       background: var(--white);
@@ -172,7 +176,6 @@
 
     .btn-upload:hover { background: var(--teal); color: #fff; }
 
-    /* Section header within form */
     .section-label {
       font-size: 10px;
       font-weight: 600;
@@ -252,6 +255,7 @@
       justify-content: center;
       align-items: center;
       min-height: 160px;
+      overflow-x: auto;
     }
 
     /* ── EMAIL MOCK ── */
@@ -293,16 +297,6 @@
       margin-bottom: 28px;
     }
 
-    /* ── SIGNATURE (the actual one) ── */
-    #sig-output {
-      font-family: 'Space Grotesk', Arial, sans-serif;
-      background: var(--cream);
-    }
-
-    #sig-output.dark {
-      background: var(--dark);
-    }
-
     /* ── ACTION BAR ── */
     .action-bar {
       display: flex;
@@ -329,8 +323,6 @@
     }
 
     .btn-copy:hover { background: var(--teal-2); }
-
-    .btn-copy svg { flex-shrink: 0; }
 
     /* ── HOW TO ── */
     .howto {
@@ -402,26 +394,23 @@
       transform: translateY(12px);
       transition: opacity 0.25s, transform 0.25s;
       pointer-events: none;
-      letter-spacing: 0.02em;
+      z-index: 1000;
     }
 
     #toast.show { opacity: 1; transform: translateY(0); }
 
-    /* ── WALTRE SIGNATURE STYLES ── */
+    /* ── WALTRE SIGNATURE STYLES (PREVIEW) ── */
     .wsig {
       padding: 22px 28px;
       display: inline-flex;
       align-items: center;
-      gap: 0;
       border-radius: 10px;
       font-family: 'Space Grotesk', Arial, sans-serif;
       background: #F2F2F1;
       transition: background 0.2s;
     }
 
-    .wsig.dark-mode {
-      background: #13181B;
-    }
+    .wsig.dark-mode { background: #13181B; }
 
     .wsig-photo {
       width: 72px;
@@ -444,7 +433,6 @@
       height: 100%;
       object-fit: cover;
       border-radius: 50%;
-      display: block;
     }
 
     .wsig-divider {
@@ -463,7 +451,6 @@
       font-weight: 600;
       color: #13181B;
       line-height: 1.15;
-      transition: color 0.2s;
     }
 
     .dark-mode .wsig-name { color: #F2F2F1; }
@@ -475,7 +462,6 @@
       text-transform: uppercase;
       letter-spacing: 0.09em;
       margin-bottom: 12px;
-      transition: color 0.2s;
     }
 
     .dark-mode .wsig-title { color: #9FB3BA; }
@@ -493,21 +479,13 @@
       color: #F2F2F1;
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.05em;
-      font-family: 'Space Grotesk', Arial, sans-serif;
     }
 
-    .wsig-btn svg {
-      width: 11px;
-      height: 11px;
-      fill: #F2F2F1;
-      display: block;
-      flex-shrink: 0;
-    }
+    .wsig-btn svg { width: 11px; height: 11px; fill: #F2F2F1; }
 
     .wsig-brand {
       margin-top: 10px;
-      font-family: 'Orbitron', 'Space Grotesk', Arial, sans-serif;
+      font-family: 'Orbitron', sans-serif;
       font-size: 8px;
       font-weight: 600;
       letter-spacing: 0.2em;
@@ -522,22 +500,13 @@
       display: flex;
       flex-wrap: wrap;
       gap: 4px 10px;
-      align-items: center;
     }
 
-    .wsig-contact a {
-      color: #0F3F44;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
+    .wsig-contact a { color: #0F3F44; text-decoration: none; font-weight: 500; }
     .dark-mode .wsig-contact { color: #9FB3BA; }
     .dark-mode .wsig-contact a { color: #9FB3BA; }
 
-    .wsig-sep {
-      color: #9FB3BA;
-      font-size: 10px;
-    }
+    .wsig-sep { color: #9FB3BA; }
   </style>
 </head>
 <body>
@@ -548,12 +517,10 @@
   </div>
 
   <div class="page">
-
     <!-- ── FORM PANEL ── -->
     <div class="panel">
       <p class="panel-title">Your Details</p>
 
-      <!-- Photo -->
       <div class="photo-area">
         <div class="photo-preview" id="photoCircle" onclick="document.getElementById('photoInput').click()">
           <span id="photoInitials">JD</span>
@@ -609,8 +576,6 @@
 
     <!-- ── RIGHT COLUMN ── -->
     <div class="preview-panel">
-
-      <!-- Preview Box -->
       <div class="preview-box">
         <div class="preview-header">
           <span>Signature Preview</span>
@@ -620,7 +585,6 @@
           </div>
         </div>
         <div class="preview-body">
-          <!-- LIVE SIGNATURE -->
           <div class="wsig" id="sigBlock">
             <div class="wsig-photo" id="sigPhoto">
               <span id="sigInitials">JD</span>
@@ -629,21 +593,21 @@
             <div class="wsig-info">
               <div class="wsig-name" id="sigName">John Doe</div>
               <div class="wsig-title" id="sigTitle">Chief of Sales &nbsp;·&nbsp; Waltre</div>
-              <div class="wsig-contact" id="sigContact">
+              <div class="wsig-contact">
                 <a id="sigEmailLink" href="mailto:john@waltre.com"><span id="sigEmail">john@waltre.com</span></a>
                 <span class="wsig-sep" id="sepPhone">|</span>
                 <span id="sigPhone">+1 (555) 000-0000</span>
               </div>
-              <div class="wsig-socials" id="sigSocials">
-                <a class="wsig-btn" id="sigLinkedin" href="https://linkedin.com/in/johndoe" target="_blank">
+              <div class="wsig-socials">
+                <a class="wsig-btn" id="sigLinkedin" href="#" target="_blank">
                   <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                   LinkedIn
                 </a>
-                <a class="wsig-btn" id="sigInstagram" href="https://instagram.com/johndoe" target="_blank">
+                <a class="wsig-btn" id="sigInstagram" href="#" target="_blank">
                   <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   Instagram
                 </a>
-                <a class="wsig-btn" id="sigCalendly" href="https://calendly.com/johndoe" target="_blank">
+                <a class="wsig-btn" id="sigCalendly" href="#" target="_blank">
                   <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>
                   Calendly
                 </a>
@@ -654,7 +618,6 @@
         </div>
       </div>
 
-      <!-- Email mock -->
       <div class="email-mock">
         <div class="email-mock-chrome">
           <div class="email-mock-row"><span class="email-mock-label">From</span><span class="email-mock-val" id="mockFrom">john@waltre.com</span></div>
@@ -667,12 +630,13 @@
             Best regards,
           </div>
           <div class="email-mock-divider"></div>
-          <!-- Signature inside mock — table-based for copy fidelity -->
+          
+          <!-- SIGNATURE COPY TARGET (TABLE BASED) -->
           <div id="sig-copy-target" style="padding-bottom: 28px;">
             <table cellpadding="0" cellspacing="0" border="0" id="sigTable" style="font-family:'Space Grotesk',Arial,sans-serif; background:#F2F2F1; border-radius:10px; padding:22px 28px;">
               <tr>
                 <td valign="middle" id="tdPhoto">
-                  <div id="tPhotoCircle" style="width:72px;height:72px;border-radius:50%;background:#3A4A52;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:#F2F2F1;letter-spacing:1px;font-family:'Space Grotesk',Arial,sans-serif;">
+                  <div id="tPhotoCircle" style="width:72px;height:72px;border-radius:50%;background:#3A4A52;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:600;color:#F2F2F1;letter-spacing:1px;font-family:'Space Grotesk',Arial,sans-serif;overflow:hidden;">
                     <span id="tInitials">JD</span>
                   </div>
                 </td>
@@ -684,30 +648,21 @@
                   <div id="tTitle" style="font-size:10px;font-weight:400;color:#3A4A52;text-transform:uppercase;letter-spacing:0.09em;margin-bottom:10px;font-family:'Space Grotesk',Arial,sans-serif;">Chief of Sales &nbsp;·&nbsp; Waltre</div>
                   <div style="font-size:11px;color:#3A4A52;margin-bottom:10px;font-family:'Space Grotesk',Arial,sans-serif;">
                     <a id="tEmailLink" href="mailto:john@waltre.com" style="color:#0F3F44;text-decoration:none;font-weight:500;"><span id="tEmail">john@waltre.com</span></a>
-                    &nbsp;<span style="color:#9FB3BA;">|</span>&nbsp;
+                    <span id="tSepPhone">&nbsp;<span style="color:#9FB3BA;">|</span>&nbsp;</span>
                     <span id="tPhone">+1 (555) 000-0000</span>
                   </div>
                   <table cellpadding="0" cellspacing="0" border="0"><tr>
                     <td style="padding-right:7px;">
-                      <a id="tLinkedin" href="https://linkedin.com/in/johndoe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;letter-spacing:0.05em;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTIwLjQ0NyAyMC40NTJoLTMuNTU0di01LjU2OWMwLTEuMzI4LS4wMjctMy4wMzctMS44NTItMy4wMzctMS44NTMgMC0yLjEzNiAxLjQ0NS0yLjEzNiAyLjkzOXY1LjY2N0g5LjM1MVY5aDMuNDE0djEuNTYxaC4wNDZjLjQ3Ny0uOSAxLjYzNy0xLjg1IDMuMzctMS44NSAzLjYwMSAwIDQuMjY3IDIuMzcgNC4yNjcgNS40NTV2Ni4yODZ6TTUuMzM3IDcuNDMzYy0xLjE0NCAwLTIuMDYzLS45MjYtMi4wNjMtMi4wNjUgMC0xLjEzOC45Mi0yLjA2MyAyLjA2My0yLjA2MyAxLjE0IDAgMi4wNjQuOTI1IDIuMDY0IDIuMDYzIDAgMS4xMzktLjkyNSAyLjA2NS0yLjA2NCAyLjA2NXptMS43ODIgMTMuMDE5SDMuNTU1VjloMy41NjR2MTEuNDUyek0yMi4yMjUgMEgxLjc3MUMuNzkyIDAgMCAuNzc0IDAgMS43Mjl2MjAuNTQyQzAgMjMuMjI3Ljc5MiAyNCAxLjc3MSAyNGgyMC40NTFDMjMuMiAyNCAyNCAyMy4yMjcgMjQgMjIuMjcxVjEuNzI5QzI0IC43NzQgMjMuMiAwIDIyLjIyMiAwaC4wMDN6Ii8+PC9zdmc+" width="11" height="11" style="display:inline-block;vertical-align:middle;" />
-                        LinkedIn
-                      </a>
+                      <a id="tLinkedin" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;font-family:'Space Grotesk',Arial,sans-serif;">LinkedIn</a>
                     </td>
                     <td style="padding-right:7px;">
-                      <a id="tInstagram" href="https://instagram.com/johndoe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;letter-spacing:0.05em;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTEyIDIuMTYzYzMuMjA0IDAgMy41ODQuMDEyIDQuODUuMDcgMy4yNTIuMTQ4IDQuNzcxIDEuNjkxIDQuOTE5IDQuOTE5LjA1OCAxLjI2NS4wNjkgMS42NDUuMDY5IDQuODQ5IDAgMy4yMDUtLjAxMiAzLjU4NC0uMDY5IDQuODQ5LS4xNDkgMy4yMjUtMS42NjQgNC43NzEtNC45MTkgNC45MTktMS4yNjYuMDU4LTEuNjQ0LjA3LTQuODUuMDctMy4yMDQgMC0zLjU4NC0uMDEyLTQuODQ5LS4wNy0zLjI2LS4xNDktNC43NzEtMS42OTktNC45MTktNC45Mi0uMDU4LTEuMjY1LS4wNy0xLjY0NC0uMDctNC44NDkgMC0zLjIwNC4wMTMtMy41ODMuMDctNC44NDkuMTQ5LTMuMjI3IDEuNjY0LTQuNzcxIDQuOTE5LTQuOTE5IDEuMjY2LS4wNTcgMS42NDUtLjA2OSA0Ljg0OS0uMDY5ek0xMiAwQzguNzQxIDAgOC4zMzMuMDE0IDcuMDUzLjA3MkMyLjY5NS4yNzIuMjczIDIuNjkuMDczIDcuMDUyLjAxNCA4LjMzMyAwIDguNzQxIDAgMTJjMCAzLjI1OS4wMTQgMy42NjguMDcyIDQuOTQ4LjIgNC4zNTggMi42MTggNi43OCA2Ljk4IDYuOThDOC4zMzMgMjMuOTg2IDguNzQxIDI0IDEyIDI0YzMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OEMxNS42NjguMDE0IDE1LjI1OSAwIDEyIDB6bTAgNS44MzhhNi4xNjIgNi4xNjIgMCAxMDAgMTIuMzI0IDYuMTYyIDYuMTYyIDAgMDAwLTEyLjMyNHpNMTIgMTZhNCA0IDAgMTEwLTggNCA0IDAgMDEwIDh6bTYuNDA2LTExLjg0NWExLjQ0IDEuNDQgMCAxMDAgMi44ODEgMS40NCAxLjQ0IDAgMDAwLTIuODgxeiIvPjwvc3ZnPg==" width="11" height="11" style="display:inline-block;vertical-align:middle;" />
-                        Instagram
-                      </a>
+                      <a id="tInstagram" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;font-family:'Space Grotesk',Arial,sans-serif;">Instagram</a>
                     </td>
                     <td>
-                      <a id="tCalendly" href="https://calendly.com/johndoe" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;letter-spacing:0.05em;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTE5IDNoLTFWMWgtMnYySDhWMUg2djJINWMtMS4xIDAtMiAuOS0yIDJ2MTRjMCAxLjEuOSAyIDIgMmgxNGMxLjEgMCAyLS45IDItMlY1YzAtMS4xLS45LTItMi0yem0wIDE2SDVWOWY0aDd2LTJINVYxMGgxNHYyaC0ydjJoMnY1ek0xNyAxNGgtMnYyaDJ2LTJ6bS00IDBoLTJ2Mmgydi0yem0tNCAwSDd2Mmgydi0yeiIvPjwvc3ZnPg==" width="11" height="11" style="display:inline-block;vertical-align:middle;" />
-                        Calendly
-                      </a>
+                      <a id="tCalendly" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:5px;padding:5px 10px;background:#0F3F44;border-radius:5px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:500;font-family:'Space Grotesk',Arial,sans-serif;">Calendly</a>
                     </td>
                   </tr></table>
-                  <div style="margin-top:10px;font-family:'Orbitron','Space Grotesk',Arial,sans-serif;font-size:8px;font-weight:600;letter-spacing:0.2em;color:#9FB3BA;text-transform:uppercase;">Waltre</div>
+                  <div style="margin-top:10px;font-family:'Orbitron',sans-serif;font-size:8px;font-weight:600;letter-spacing:0.2em;color:#9FB3BA;text-transform:uppercase;">Waltre</div>
                 </td>
               </tr>
             </table>
@@ -715,7 +670,6 @@
         </div>
       </div>
 
-      <!-- Actions -->
       <div class="action-bar">
         <button class="btn-copy" onclick="copySignature()">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -723,19 +677,16 @@
         </button>
       </div>
 
-      <!-- How to -->
       <div class="howto">
         <strong>How to use</strong>
         <ol>
           <li>Fill in your details on the left — the preview updates live.</li>
           <li>Click <em>Copy Signature</em> above.</li>
-          <li>Open your email client (Gmail, Outlook, Apple Mail) → Settings → Signature.</li>
-          <li>Paste with <kbd>Ctrl+V</kbd> / <kbd>Cmd+V</kbd> into the signature field.</li>
+          <li>Open your email client settings and paste with <kbd>Ctrl+V</kbd>.</li>
         </ol>
       </div>
-
-    </div><!-- end right -->
-  </div><!-- end page -->
+    </div>
+  </div>
 
   <div id="toast">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -743,76 +694,74 @@
   </div>
 
   <script>
-    // ── STATE ──
+    const $ = id => document.getElementById(id);
     let photoDataUrl = null;
     let darkMode = false;
 
-    // ── INPUTS ──
-    const $ = id => document.getElementById(id);
-
     function getInitials(name) {
-      return (name || '').trim().split(/\s+/).map(w => w[0] || '').join('').toUpperCase().slice(0, 2) || '??';
+      return (name || '').trim().split(/\s+/).map(w => w[0] || '').join('').toUpperCase().slice(0, 2) || 'JD';
     }
 
     function update() {
-      const name      = $('inName').value.trim()     || 'Full Name';
+      // 1. Get values
+      const name      = $('inName').value.trim()     || 'John Doe';
       const title     = $('inTitle').value.trim()    || 'Job Title';
-      const email     = $('inEmail').value.trim()    || '';
+      const email     = $('inEmail').value.trim()    || 'john@waltre.com';
       const phone     = $('inPhone').value.trim()    || '';
       const linkedin  = $('inLinkedin').value.trim() || '#';
       const instagram = $('inInstagram').value.trim()|| '#';
       const calendly  = $('inCalendly').value.trim() || '#';
       const initials  = getInitials(name);
 
-      // ── Live preview (wsig block) ──
-      $('sigInitials').textContent  = initials;
-      $('sigName').textContent      = name;
-      $('sigTitle').innerHTML       = title + ' &nbsp;·&nbsp; Waltre';
-      $('sigEmail').textContent     = email;
-      $('sigEmailLink').href        = 'mailto:' + email;
-      $('sigPhone').textContent     = phone;
-      $('sepPhone').style.display   = phone ? '' : 'none';
-      $('sigLinkedin').href         = linkedin;
-      $('sigInstagram').href        = instagram;
-      $('sigCalendly').href         = calendly;
+      // 2. Update LIVE PREVIEW (div based)
+      $('sigName').textContent = name;
+      $('sigTitle').innerHTML = title + ' &nbsp;·&nbsp; Waltre';
+      $('sigEmail').textContent = email;
+      $('sigEmailLink').href = 'mailto:' + email;
+      $('sigPhone').textContent = phone;
+      $('sepPhone').style.display = phone ? 'inline' : 'none';
+      
+      $('sigLinkedin').href = linkedin;
+      $('sigInstagram').href = instagram;
+      $('sigCalendly').href = calendly;
 
-      // ── Photo circle (live preview) ──
+      // Update Preview Initials/Photo
       if (photoDataUrl) {
         $('sigPhoto').innerHTML = `<img src="${photoDataUrl}" />`;
       } else {
         $('sigPhoto').innerHTML = `<span id="sigInitials">${initials}</span>`;
       }
 
-      // ── Photo circle topbar ──
-      $('photoInitials').textContent = initials;
-
-      // ── Table (copy target) ──
-      $('tInitials').textContent = initials;
+      // 3. Update COPY TARGET (table based)
       $('tName').textContent = name;
-      $('tTitle').innerHTML  = title + ' &nbsp;·&nbsp; Waltre';
+      $('tTitle').innerHTML = title + ' &nbsp;·&nbsp; Waltre';
       $('tEmail').textContent = email;
       $('tEmailLink').href = 'mailto:' + email;
       $('tPhone').textContent = phone;
-      $('tLinkedin').href  = linkedin;
+      $('tSepPhone').style.display = phone ? 'inline' : 'none';
+
+      $('tLinkedin').href = linkedin;
       $('tInstagram').href = instagram;
-      $('tCalendly').href  = calendly;
+      $('tCalendly').href = calendly;
 
-      // ── Email mock ──
-      $('mockFrom').textContent = email || 'your@waltre.com';
-
-      // Photo in table
+      // Update Table Initials/Photo
       if (photoDataUrl) {
         $('tPhotoCircle').innerHTML = `<img src="${photoDataUrl}" width="72" height="72" style="border-radius:50%;object-fit:cover;display:block;" />`;
       } else {
         $('tPhotoCircle').innerHTML = `<span id="tInitials" style="display:block;text-align:center;">${initials}</span>`;
       }
+
+      // 4. Update UI helpers
+      $('mockFrom').textContent = email;
+      $('photoInitials').textContent = initials;
     }
 
+    // Attach listeners
     ['inName','inTitle','inEmail','inPhone','inLinkedin','inInstagram','inCalendly'].forEach(id => {
       $(id).addEventListener('input', update);
     });
 
-    // ── PHOTO UPLOAD ──
+    // Photo Upload
     $('photoInput').addEventListener('change', function() {
       const file = this.files[0];
       if (!file) return;
@@ -825,7 +774,6 @@
       reader.readAsDataURL(file);
     });
 
-    // ── VARIANT TOGGLE ──
     function setVariant(v) {
       darkMode = v === 'dark';
       $('btnLight').classList.toggle('active', !darkMode);
@@ -843,7 +791,6 @@
       }
     }
 
-    // ── COPY ──
     function copySignature() {
       const node = $('sig-copy-target');
       const range = document.createRange();
@@ -853,20 +800,16 @@
       sel.addRange(range);
       try {
         document.execCommand('copy');
-        showToast();
+        const t = $('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 3000);
       } catch(e) {
-        alert('Could not copy automatically. Please select manually.');
+        console.error('Copy failed', e);
       }
       sel.removeAllRanges();
     }
 
-    function showToast() {
-      const t = $('toast');
-      t.classList.add('show');
-      setTimeout(() => t.classList.remove('show'), 3000);
-    }
-
-    // ── INIT ──
+    // Initialize
     update();
   </script>
 </body>
