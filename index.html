@@ -45,7 +45,7 @@
       font-family: var(--font-logo);
       font-size: 20px;
       color: var(--cream);
-      letter-spacing: 0.02em;
+      letter-spacing: 0em;
     }
     .topbar-logo b { font-weight: 600; }
     .topbar-logo span { font-weight: 400; }
@@ -157,7 +157,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .photo-preview img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
 
     .photo-info strong { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
     .photo-info span { font-size: 12px; color: var(--mist); }
@@ -338,10 +338,10 @@
       text-decoration: none; color: var(--cream); font-size: 10px; font-weight: 600;
       display: flex; align-items: center; gap: 6px; font-family: var(--font-header);
     }
-    .wsig-btn svg { width: 13px; height: 13px; fill: currentColor; }
+    .wsig-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; display: block; }
 
     .wsig-brand {
-      margin-top: 14px; font-family: var(--font-logo); font-size: 10px; letter-spacing: 0.02em; color: var(--mist);
+      margin-top: 14px; font-family: var(--font-logo); font-size: 10px; letter-spacing: 0em; color: var(--mist);
     }
     .wsig-brand b { font-weight: 600; }
     .wsig-brand span { font-weight: 400; }
@@ -363,7 +363,6 @@
   </div>
 
   <div class="page">
-    <!-- ── FORM PANEL ── -->
     <div class="panel">
       <p class="panel-title">Details</p>
 
@@ -420,14 +419,13 @@
       </div>
     </div>
 
-    <!-- ── RIGHT COLUMN ── -->
     <div class="preview-panel">
       <div class="preview-box">
         <div class="preview-header">
           <span>Live Preview</span>
           <div class="variant-toggle">
             <button class="variant-btn active" id="btnLight" onclick="setVariant('light')">Light</button>
-            <button class="variant-btn" id="btnDark" onclick="setVariant('dark')">Dark</button>
+            <button class="variant-btn" id="btnDark" onclick="setVariant('dark') || false">Dark</button>
           </div>
         </div>
         <div class="preview-body">
@@ -438,7 +436,7 @@
             <div class="wsig-divider"></div>
             <div class="wsig-info">
               <div class="wsig-name" id="sigName">John Doe</div>
-              <div class="wsig-title" id="sigTitle">CHIEF OF SALES &nbsp;·&nbsp; WALTRE</div>
+              <div class="wsig-title" id="sigTitle">CHIEF OF SALES &nbsp;·&nbsp; Waltre</div>
               <div class="wsig-contact">
                 <a id="sigEmailLink" href="mailto:john@waltre.com"><span id="sigEmail">john@waltre.com</span></a>
                 <span id="sepPhone" style="color:var(--mist)">|</span>
@@ -446,15 +444,15 @@
               </div>
               <div class="wsig-socials">
                 <a class="wsig-btn" id="sigLinkedin" href="#" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                   LinkedIn
                 </a>
                 <a class="wsig-btn" id="sigInstagram" href="#" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   Instagram
                 </a>
                 <a class="wsig-btn" id="sigCalendly" href="#" target="_blank">
-                  <svg viewBox="0 0 24 24"><path d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13zM7 10h10v2H7v-2zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
                   Calendly
                 </a>
               </div>
@@ -504,7 +502,7 @@
                     </td>
                     <td style="padding-right:8px;">
                       <a id="tInstagram" href="#" target="_blank" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:600;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTEyIDIuMTYzYzMuMjA0IDAgMy41ODQuMDEyIDQuODUuMDcgMy4yNTIuMTQ4IDQuNzcxIDEuNjkxIDQuOTE5IDQuOTE5LjA1OCAxLjI2NS4wNjkgMS42NDUuMDY5IDQuODQ5IDAgMy4yMDUtLjAxMiAzLjU4NC0uMDY5IDQuODQ5LS4xNDkgMy4yMjUtMS42NjQgNC43NzEtNC45MTkgNC45MTktMS4yNjYuMDU4LTEuNjQ0LjA3LTQuODUuMDctMy4yMDQgMC0zLjU4NC0uMDEyLTQuODQ5LS4wNy0zLjI2LS4xNDktNC43NzEtMS42OTktNC45MTktNC45Mi0uMDU4LTEuMjY1LS4wNy0xLjY0NC0uMDctNC44NDkgMC0zLjIwNC4wMTMtMy41ODMuMDctNC44NDkuMTQ5LTMuMjI3IDEuNjY0LTQuNzcxIDQuOTE5LTQuOTE5IDEuMjY2LS4wNTcgMS42NDUtLjA2OSA0Ljg0OS0uMDY5ek0xMiAwQzguNzQxIDAgOC4zMzMuMDE0IDcuMDUzLjA3MkMyLjY5NS4yNzIuMjczIDIuNjkuMDczIDcuMDUyLjAxNCA4LjMzMyAwIDguNzQxIDAgMTJjMCAzLjI1OS4wMTQgMy42NjguMDcyIDQuOTQ4LjIgNC4zNTggMi42MTggNi43OCA2Ljk4IDYuOThDOC4zMzMgMjMuOTg2IDguNzQxIDI0IDEyIDI0YzMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTIuNjE3LTYuNzgtNi45NzktNi45OEMxNS42NjguMDE0IDE1LjI1OSAwIDEyIDB6bTAgNS44MzhhNi4xNjIgNi4xNjIgMCAxMDAgMTIuMzI0IDYuMTYyIDYuMTYyIDAgMDAwLTEyLjMyNHpNMTIgMTZhNCA0IDAgMTEwLTggNCA0IDAgMDEwIDh6bTYuNDA2LTExLjg0NWExLjQ0IDEuNDQgMCAxMDAgMi44ODEgMS40NCAxLjQ0IDAgMDAwLTIuODgxeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTEyIDIuMTYzYzMuMjA0IDAgMy41ODQuMDEyIDQuODUuMDcgMy4yNTIuMTQ4IDQuNzcxIDEuNjkxIDQuOTE5IDQuOTE5LjA1OCAxLjI2NS4wNjkgMS42NDUuMDY5IDQuODQ5IDAgMy4yMDUtLjAxMiAzLjU4NC0uMDY5IDQuODQ5LS4xNDkgMy4yMjUtMS42NjQgNC43NzEtNC45MTkgNC45MTktMS4yNjYuMDU4LTEuNjQ0LjA3LTQuODUuMDctMy4yMDQgMC0zLjU4NC0uMDEyLTQuODQ5LS4wNy0zLjI2LS4xNDktNC43NzEtMS42OTktNC45MTktNC45Mi0uMDU4LTEuMjY1LS4wNy0xLjY0NC0uMDctNC44NDkgMC0zLjIwNC4wMTMtMy41ODMuMDctNC44NDkuMTQ5LTMuMjI3IDEuNjY0LTQuNzcxIDQuOTE5LTQuOTE5IDEuMjY2LS4wNTcgMS42NDUtLjA2OSA0Ljg0OS0uMDY5ek0xMiAwQzguNzQxIDAgOC4zMzMuMDE0IDcuMDUzLjA3MkMyLjY5NS4yNzIuMjczIDIuNjkuMDczIDcuMDUyLjAxNCA4LjMzMyAwIDguNzQxIDAgMTJjMCAzLjI1OS4wMTQgMy42NjguMDcyIDQuOTQ4LjIgNC4zNTggMi42MTggNi43OCA2Ljk4IDYuOThDOC4zMzMgMjMuOTg2IDguNzQxIDI0IDEyIDI0YzMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OEMxNS42NjguMDE0IDE1LjI1OSAwIDEyIDB6bTAgNS44MzhhNi4xNjIgNi4xNjIgMCAxMDAgMTIuMzI0IDYuMTYyIDYuMTYyIDAgMDAwLTEyLjMyNHpNMTIgMTZhNCA0IDAgMTEwLTggNCA0IDAgMDEwIDh6bTYuNDA2LTExLjg0NWExLjQ0IDEuNDQgMCAxMDAgMi44ODEgMS40NCAxLjQ0IDAgMDAwLTIuODgxeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
                         Instagram
                       </a>
                     </td>
@@ -515,7 +513,7 @@
                       </a>
                     </td>
                   </tr></table>
-                  <div id="tBrand" style="margin-top:14px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:0.02em;color:#9FB3BA;">
+                  <div id="tBrand" style="margin-top:14px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:0em;color:#9FB3BA;">
                     <b style="font-weight:600;">Walt</b><span style="font-weight:400;">re</span>
                   </div>
                 </td>
@@ -554,7 +552,7 @@
 
       // PREVIEW
       $('sigName').textContent = name;
-      $('sigTitle').innerHTML = title.toUpperCase() + ' &nbsp;·&nbsp; WALTRE';
+      $('sigTitle').innerHTML = title.toUpperCase() + ' &nbsp;·&nbsp; Waltre';
       $('sigEmail').textContent = email;
       $('sigEmailLink').href = 'mailto:' + email;
       $('sigPhone').textContent = phone;
