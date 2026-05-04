@@ -9,18 +9,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      /* Brand Colors */
       --dark:    #13181B;
       --teal:    #0F3F44;
       --mist:    #9FB3BA;
       --teal-2:  #3A4A52;
       --cream:   #F2F2F1;
-      --mauve:   #5D4F5D;
       --white:   #ffffff;
-
-      /* Fonts */
       --font-header: 'Space Grotesk', sans-serif;
-      --font-body: 'Avenir Next LT Pro', 'Inter', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
       --font-logo: 'Orbitron', sans-serif;
     }
 
@@ -32,7 +28,6 @@
       padding: 0;
     }
 
-    /* ── TOPBAR ── */
     .topbar {
       background: var(--dark);
       padding: 16px 40px;
@@ -45,7 +40,6 @@
       font-family: var(--font-logo);
       font-size: 20px;
       color: var(--cream);
-      letter-spacing: 0em;
     }
     .topbar-logo b { font-weight: 600; }
     .topbar-logo span { font-weight: 400; }
@@ -53,13 +47,11 @@
     .topbar-sub {
       font-family: var(--font-header);
       font-size: 11px;
-      font-weight: 400;
       color: var(--mist);
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    /* ── LAYOUT ── */
     .page {
       max-width: 1100px;
       margin: 0 auto;
@@ -70,11 +62,8 @@
       align-items: start;
     }
 
-    @media (max-width: 900px) {
-      .page { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px) { .page { grid-template-columns: 1fr; } }
 
-    /* ── PANEL ── */
     .panel {
       background: var(--white);
       border-radius: 14px;
@@ -86,7 +75,6 @@
       font-family: var(--font-header);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mist);
       margin-bottom: 24px;
@@ -94,16 +82,13 @@
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
-    /* ── FORM ── */
     .field { margin-bottom: 18px; }
-
     .field label {
       display: block;
       font-family: var(--font-header);
       font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
       color: var(--teal-2);
       margin-bottom: 6px;
     }
@@ -113,23 +98,11 @@
       padding: 10px 14px;
       border: 1.5px solid rgba(0,0,0,0.1);
       border-radius: 8px;
-      font-family: var(--font-body);
       font-size: 14px;
-      color: var(--dark);
       background: var(--cream);
       outline: none;
-      transition: all 0.2s;
     }
 
-    .field input:focus {
-      border-color: var(--teal);
-      background: #fff;
-      box-shadow: 0 0 0 3px rgba(15, 63, 68, 0.05);
-    }
-
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    /* Photo upload */
     .photo-area {
       display: flex;
       align-items: center;
@@ -147,20 +120,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-header);
-      font-size: 20px;
-      font-weight: 600;
       color: var(--cream);
       overflow: hidden;
       cursor: pointer;
-      border: 2px solid var(--cream);
+      border: 2px solid var(--white);
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .photo-preview img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-
-    .photo-info strong { display: block; font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-    .photo-info span { font-size: 12px; color: var(--mist); }
+    .photo-preview img { width: 100%; height: 100%; object-fit: cover; }
 
     .btn-upload {
       display: inline-block;
@@ -172,18 +139,14 @@
       font-size: 11px;
       font-weight: 700;
       color: var(--teal);
-      background: transparent;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .btn-upload:hover { background: var(--teal); color: var(--white); }
 
     .section-label {
       font-family: var(--font-header);
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: var(--mist);
       margin: 24px 0 14px;
       display: flex;
@@ -192,7 +155,6 @@
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: rgba(0,0,0,0.07); }
 
-    /* ── PREVIEW PANEL ── */
     .preview-panel { display: flex; flex-direction: column; gap: 24px; }
 
     .preview-box {
@@ -214,18 +176,11 @@
       font-family: var(--font-header);
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--mist);
     }
 
-    .variant-toggle {
-      display: flex;
-      background: var(--cream);
-      padding: 4px;
-      border-radius: 8px;
-    }
-
+    .variant-toggle { display: flex; background: var(--cream); padding: 4px; border-radius: 8px; }
     .variant-btn {
       padding: 6px 16px;
       font-family: var(--font-header);
@@ -234,79 +189,19 @@
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
       background: transparent;
       color: var(--teal-2);
     }
+    .variant-btn.active { background: var(--white); color: var(--teal); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
 
-    .variant-btn.active {
-      background: var(--white);
-      color: var(--teal);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
+    .preview-body { padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 200px; }
 
-    .preview-body {
-      padding: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 200px;
-    }
-
-    /* ── EMAIL MOCK ── */
-    .email-mock {
-      background: var(--cream);
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.07);
-      overflow: hidden;
-    }
-
-    .email-mock-chrome {
-      background: var(--white);
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      padding: 14px 24px;
-      display: flex;
-      gap: 24px;
-      font-size: 12px;
-    }
-
-    .email-mock-row { display: flex; align-items: baseline; gap: 8px; }
-    .email-mock-label { font-weight: 600; color: var(--mist); font-size: 11px; min-width: 32px; }
-
-    .email-mock-body { padding: 32px 32px 0; }
-    .email-mock-content { font-size: 14px; line-height: 1.6; color: var(--teal-2); margin-bottom: 32px; }
-    .email-mock-divider { height: 1px; background: rgba(0,0,0,0.07); margin: 0 -32px 32px; }
-
-    /* ── ACTION BAR ── */
-    .action-bar { display: flex; gap: 12px; }
-
-    .btn-copy {
-      flex: 1;
-      padding: 16px 24px;
-      background: var(--teal);
-      color: var(--white);
-      border: none;
-      border-radius: 12px;
-      font-family: var(--font-header);
-      font-size: 14px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      transition: all 0.2s;
-    }
-    .btn-copy:hover { background: var(--dark); transform: translateY(-1px); }
-
-    /* ── WALTRE SIGNATURE STYLES (PREVIEW) ── */
     .wsig {
       padding: 24px 32px;
       display: inline-flex;
       align-items: center;
       border-radius: 12px;
       background: var(--cream);
-      transition: background 0.3s;
     }
     .wsig.dark-mode { background: var(--dark); }
 
@@ -316,7 +211,7 @@
       font-family: var(--font-header); font-size: 24px; font-weight: 700; color: var(--cream);
       flex-shrink: 0; overflow: hidden;
     }
-    .wsig-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .wsig-photo img { width: 100%; height: 100%; object-fit: cover; }
 
     .wsig-divider { width: 2px; height: 80px; background: var(--teal); margin: 0 28px; flex-shrink: 0; border-radius: 4px; }
 
@@ -324,12 +219,11 @@
     .wsig-name { font-family: var(--font-header); font-size: 18px; font-weight: 700; color: var(--dark); }
     .dark-mode .wsig-name { color: var(--cream); }
 
-    .wsig-title { font-family: var(--font-body); font-size: 11px; font-weight: 500; color: var(--teal-2); letter-spacing: 0.1em; margin-bottom: 14px; text-transform: uppercase; }
+    .wsig-title { font-size: 11px; font-weight: 500; color: var(--teal-2); margin-bottom: 14px; text-transform: uppercase; }
     .dark-mode .wsig-title { color: var(--mist); }
 
-    .wsig-contact { font-family: var(--font-body); font-size: 12px; color: var(--teal-2); margin-bottom: 12px; display: flex; gap: 12px; }
+    .wsig-contact { font-size: 12px; color: var(--teal-2); margin-bottom: 12px; display: flex; gap: 12px; }
     .wsig-contact a { color: var(--teal); text-decoration: none; font-weight: 600; }
-    .dark-mode .wsig-contact { color: var(--mist); }
     .dark-mode .wsig-contact a { color: var(--mist); }
 
     .wsig-socials { display: flex; gap: 8px; }
@@ -338,19 +232,24 @@
       text-decoration: none; color: var(--cream); font-size: 10px; font-weight: 600;
       display: flex; align-items: center; gap: 6px; font-family: var(--font-header);
     }
-    .wsig-btn svg { width: 14px; height: 14px; fill: currentColor; flex-shrink: 0; display: block; }
+    .wsig-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; flex-shrink: 0; }
 
     .wsig-brand {
-      margin-top: 14px; font-family: var(--font-logo); font-size: 10px; letter-spacing: 0em; color: var(--mist);
+      margin-top: 14px; font-family: var(--font-logo); font-size: 11px; letter-spacing: -0.05em; color: var(--mist);
     }
     .wsig-brand b { font-weight: 600; }
     .wsig-brand span { font-weight: 400; }
+
+    .btn-copy {
+      padding: 16px 24px; background: var(--teal); color: var(--white);
+      border: none; border-radius: 12px; font-family: var(--font-header);
+      font-size: 14px; font-weight: 700; cursor: pointer; width: 100%;
+    }
 
     #toast {
       position: fixed; bottom: 32px; right: 32px; background: var(--teal); color: var(--white);
       padding: 12px 24px; border-radius: 10px; font-size: 13px; font-weight: 600;
       opacity: 0; transform: translateY(10px); transition: all 0.3s; pointer-events: none;
-      z-index: 9999;
     }
     #toast.show { opacity: 1; transform: translateY(0); }
   </style>
@@ -372,51 +271,22 @@
         </div>
         <div class="photo-info">
           <strong>Profile Photo</strong>
-          <span>SVG or PNG recommended</span><br/>
-          <label class="btn-upload" for="photoInput">Upload</label>
+          <span>Max size: 500KB</span><br/>
+          <label class="btn-upload" for="photoInput">Upload File</label>
           <input type="file" id="photoInput" accept="image/*" style="display:none" />
         </div>
       </div>
 
       <p class="section-label">Personal Info</p>
-
-      <div class="field">
-        <label>Name</label>
-        <input type="text" id="inName" value="John Doe" />
-      </div>
-
-      <div class="field">
-        <label>Job Title</label>
-        <input type="text" id="inTitle" value="CHIEF OF SALES" />
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label>Email</label>
-          <input type="email" id="inEmail" value="john@waltre.com" />
-        </div>
-        <div class="field">
-          <label>Phone</label>
-          <input type="text" id="inPhone" value="+1 (555) 000-0000" />
-        </div>
-      </div>
+      <div class="field"><label>Name</label><input type="text" id="inName" value="John Doe" /></div>
+      <div class="field"><label>Job Title</label><input type="text" id="inTitle" value="CHIEF OF SALES" /></div>
+      <div class="field"><label>Email</label><input type="email" id="inEmail" value="john@waltre.com" /></div>
+      <div class="field"><label>Phone</label><input type="text" id="inPhone" value="+1 (555) 000-0000" /></div>
 
       <p class="section-label">Socials</p>
-
-      <div class="field">
-        <label>LinkedIn</label>
-        <input type="text" id="inLinkedin" value="https://linkedin.com/in/johndoe" />
-      </div>
-
-      <div class="field">
-        <label>Instagram</label>
-        <input type="text" id="inInstagram" value="https://instagram.com/johndoe" />
-      </div>
-
-      <div class="field">
-        <label>Calendly</label>
-        <input type="text" id="inCalendly" value="https://calendly.com/johndoe" />
-      </div>
+      <div class="field"><label>LinkedIn</label><input type="text" id="inLinkedin" value="https://linkedin.com/in/johndoe" /></div>
+      <div class="field"><label>Instagram</label><input type="text" id="inInstagram" value="https://instagram.com/johndoe" /></div>
+      <div class="field"><label>Calendly</label><input type="text" id="inCalendly" value="https://calendly.com/johndoe" /></div>
     </div>
 
     <div class="preview-panel">
@@ -425,34 +295,32 @@
           <span>Live Preview</span>
           <div class="variant-toggle">
             <button class="variant-btn active" id="btnLight" onclick="setVariant('light')">Light</button>
-            <button class="variant-btn" id="btnDark" onclick="setVariant('dark') || false">Dark</button>
+            <button class="variant-btn" id="btnDark" onclick="setVariant('dark')">Dark</button>
           </div>
         </div>
         <div class="preview-body">
           <div class="wsig" id="sigBlock">
-            <div class="wsig-photo" id="sigPhoto">
-              <span id="sigInitials">JD</span>
-            </div>
+            <div class="wsig-photo" id="sigPhoto">JD</div>
             <div class="wsig-divider"></div>
             <div class="wsig-info">
               <div class="wsig-name" id="sigName">John Doe</div>
               <div class="wsig-title" id="sigTitle">CHIEF OF SALES &nbsp;·&nbsp; Waltre</div>
               <div class="wsig-contact">
-                <a id="sigEmailLink" href="mailto:john@waltre.com"><span id="sigEmail">john@waltre.com</span></a>
+                <a id="sigEmailLink" href="#"><span id="sigEmail">john@waltre.com</span></a>
                 <span id="sepPhone" style="color:var(--mist)">|</span>
                 <span id="sigPhone">+1 (555) 000-0000</span>
               </div>
               <div class="wsig-socials">
                 <a class="wsig-btn" id="sigLinkedin" href="#" target="_blank">
-                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.76z"/></svg>
                   LinkedIn
                 </a>
                 <a class="wsig-btn" id="sigInstagram" href="#" target="_blank">
-                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
                   Instagram
                 </a>
                 <a class="wsig-btn" id="sigCalendly" href="#" target="_blank">
-                  <svg width="14" height="14" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                  <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 10h10v2H7v-2zm0 4h10v2H7v-2zm0 4h7v2H7v-2z"/></svg>
                   Calendly
                 </a>
               </div>
@@ -462,74 +330,55 @@
         </div>
       </div>
 
-      <div class="email-mock">
-        <div class="email-mock-chrome">
-          <div class="email-mock-row"><span class="email-mock-label">From</span><span id="mockFrom" style="font-weight:500">john@waltre.com</span></div>
-        </div>
-        <div class="email-mock-body">
-          <div class="email-mock-content">
-            Hi team,<br/><br/>
-            I've updated the brand assets for the next campaign. Please review the attachments.<br/><br/>
-            Best,
-          </div>
-          <div class="email-mock-divider"></div>
-          
-          <div id="sig-copy-target">
-            <table cellpadding="0" cellspacing="0" border="0" id="sigTable" style="font-family:'Avenir Next LT Pro','Inter',Arial,sans-serif; background:#F2F2F1; border-radius:12px; padding:24px 32px;">
-              <tr>
-                <td valign="middle">
-                  <div id="tPhotoCircle" style="width:80px;height:80px;border-radius:50%;background:#3A4A52;display:flex;align-items:center;justify-content:center;overflow:hidden;">
-                    <span id="tInitials" style="font-family:'Space Grotesk',Arial,sans-serif;font-size:24px;font-weight:700;color:#F2F2F1;">JD</span>
-                  </div>
-                </td>
-                <td valign="middle" style="padding:0 28px;">
-                  <div style="width:2px;height:80px;background:#0F3F44;border-radius:4px;"></div>
-                </td>
-                <td valign="middle">
-                  <div id="tName" style="font-family:'Space Grotesk',Arial,sans-serif;font-size:18px;font-weight:700;color:#13181B;line-height:1.15;">John Doe</div>
-                  <div id="tTitle" style="font-size:11px;font-weight:500;color:#3A4A52;letter-spacing:0.1em;margin-bottom:12px;text-transform:uppercase;">CHIEF OF SALES &nbsp;·&nbsp; Waltre</div>
-                  <div style="font-size:12px;color:#3A4A52;margin-bottom:12px;">
-                    <a id="tEmailLink" href="mailto:john@waltre.com" style="color:#0F3F44;text-decoration:none;font-weight:600;"><span id="tEmail">john@waltre.com</span></a>
-                    <span id="tSepPhone">&nbsp;<span style="color:#9FB3BA;">|</span>&nbsp;</span>
-                    <span id="tPhone">+1 (555) 000-0000</span>
-                  </div>
-                  <table cellpadding="0" cellspacing="0" border="0"><tr>
-                    <td style="padding-right:8px;">
-                      <a id="tLinkedin" href="#" target="_blank" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:600;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTE5IDBoLTE0Yy0yLjc2MSAwLTUgMi4yMzktNSA1djE0YzAgMi43NjEgMi4yMzkgNSA1IDVoMTRjMi43NjIgMCA1LTIuMjM5IDUtNXYtMTRjMC0yLjc2MS0yLjIzOC01LTUtNXptLTExIDE5aC0zdi0xMWgzdjExem0tMS41LTEyLjI2OGMtLjk2NiAwLTEuNzUtLjc5LTEuNzUtMS43NjRzLjc4NC0xLjc2NCAxLjc1LTEuNzY0IDEuNzUuNzkgMS43NSAxLjc2NC0uNzgzIDEuNzY0LTEuNzUgMS43NjR6bTEzLjUgMTIuMjY4aC0zdi01LjYwNGMwLTMuMzY4LTQtMy4xMTMtNCAwdjUuNjA0aC0zdi0xMWgzdjEuNzY1YzEuMzk2LTIuNTg2IDctMi43NzcgNyAyLjQ3NnY2Ljc1OXoiLz48L3N2Zz4=" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
-                        LinkedIn
-                      </a>
-                    </td>
-                    <td style="padding-right:8px;">
-                      <a id="tInstagram" href="#" target="_blank" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:600;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTEyIDIuMTYzYzMuMjA0IDAgMy41ODQuMDEyIDQuODUuMDcgMy4yNTIuMTQ4IDQuNzcxIDEuNjkxIDQuOTE5IDQuOTE5LjA1OCAxLjI2NS4wNjkgMS42NDUuMDY5IDQuODQ5IDAgMy4yMDUtLjAxMiAzLjU4NC0uMDY5IDQuODQ5LS4xNDkgMy4yMjUtMS42NjQgNC43NzEtNC45MTkgNC45MTktMS4yNjYuMDU4LTEuNjQ0LjA3LTQuODUuMDctMy4yMDQgMC0zLjU4NC0uMDEyLTQuODQ5LS4wNy0zLjI2LS4xNDktNC43NzEtMS42OTktNC45MTktNC45Mi0uMDU4LTEuMjY1LS4wNy0xLjY0NC0uMDctNC44NDkgMC0zLjIwNC4wMTMtMy41ODMuMDctNC44NDkuMTQ5LTMuMjI3IDEuNjY0LTQuNzcxIDQuOTE5LTQuOTE5IDEuMjY2LS4wNTcgMS42NDUtLjA2OSA0Ljg0OS0uMDY5ek0xMiAwQzguNzQxIDAgOC4zMzMuMDE0IDcuMDUzLjA3MkMyLjY5NS4yNzIuMjczIDIuNjkuMDczIDcuMDUyLjAxNCA4LjMzMyAwIDguNzQxIDAgMTJjMCAzLjI1OS4wMTQgMy42NjguMDcyIDQuOTQ4LjIgNC4zNTggMi42MTggNi43OCA2Ljk4IDYuOThDOC4zMzMgMjMuOTg2IDguNzQxIDI0IDEyIDI0YzMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OEMxNS42NjguMDE0IDE1LjI1OSAwIDEyIDB6bTAgNS44MzhhNi4xNjIgNi4xNjIgMCAxMDAgMTIuMzI0IDYuMTYyIDYuMTYyIDAgMDAwLTEyLjMyNHpNMTIgMTZhNCA0IDAgMTEwLTggNCA0IDAgMDEwIDh6bTYuNDA2LTExLjg0NWExLjQ0IDEuNDQgMCAxMDAgMi44ODEgMS40NCAxLjQ0IDAgMDAwLTIuODgxeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
-                        Instagram
-                      </a>
-                    </td>
-                    <td>
-                      <a id="tCalendly" href="#" target="_blank" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;text-decoration:none;color:#F2F2F1;font-size:10px;font-weight:600;font-family:'Space Grotesk',Arial,sans-serif;">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTIwIDNoLTFWMWgtMnYySDdWMUg1djJINGMtMS4xIDAtMiAuOS0yIDJ2MTZjMCAxLjEuOSAyIDIgMmgxNmMxLjEgMCAyLS45IDItVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzek03IDEwaDEwdjJIN3YtMnptMCA0aDEwdjJIN3YtMnptMCA0aDd2Mkg3di0yeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
-                        Calendly
-                      </a>
-                    </td>
-                  </tr></table>
-                  <div id="tBrand" style="margin-top:14px;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:0em;color:#9FB3BA;">
-                    <b style="font-weight:600;">Walt</b><span style="font-weight:400;">re</span>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="action-bar">
-        <button class="btn-copy" onclick="copySignature()">Copy to Clipboard</button>
-      </div>
+      <button class="btn-copy" onclick="copySignature()">Copy to Clipboard</button>
     </div>
   </div>
 
   <div id="toast">Copied!</div>
+
+  <!-- HIDDEN TABLE FOR COPYING -->
+  <div id="sig-copy-target" style="position: absolute; left: -9999px;">
+    <table cellpadding="0" cellspacing="0" border="0" id="sigTable" style="font-family:'Arial',sans-serif; background:#F2F2F1; border-radius:12px; padding:24px 32px;">
+      <tr>
+        <td valign="middle" id="tPhotoTarget">
+          <div id="tPhotoCircle" style="width:80px;height:80px;border-radius:50%;background:#3A4A52;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <span id="tInitials" style="font-family:'Arial',sans-serif;font-size:24px;font-weight:700;color:#F2F2F1;">JD</span>
+          </div>
+        </td>
+        <td valign="middle" style="padding:0 24px;"><div style="width:2px;height:80px;background:#0F3F44;"></div></td>
+        <td valign="middle">
+          <div id="tName" style="font-size:18px;font-weight:700;color:#13181B;">John Doe</div>
+          <div id="tTitle" style="font-size:11px;font-weight:500;color:#3A4A52;text-transform:uppercase;margin-bottom:12px;">CHIEF OF SALES &nbsp;·&nbsp; Waltre</div>
+          <div style="font-size:12px;color:#3A4A52;margin-bottom:12px;">
+            <a id="tEmailLink" href="#" style="color:#0F3F44;text-decoration:none;font-weight:600;"><span id="tEmail">john@waltre.com</span></a>
+            <span id="tSepPhone">&nbsp;|&nbsp;</span>
+            <span id="tPhone">+1 (555) 000-0000</span>
+          </div>
+          <table cellpadding="0" cellspacing="0" border="0"><tr>
+            <td style="padding-right:8px;">
+              <a id="tLinkedin" href="#" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;color:#F2F2F1;font-size:10px;font-weight:600;text-decoration:none;font-family:'Arial',sans-serif;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTE5IDBoLTE0Yy0yLjc2MSAwLTUgMi4yMzktNSA1djE0YzAgMi43NjEgMi4yMzkgNSA1IDVoMTRjMi43NjIgMCA1LTIuMjM5IDUtNXYtMTRjMC0yLjc2MS0yLjIzOC01LTUtNXptLTExIDE5aC0zdi0xMWgzdjExem0tMS41LTEyLjI2OGMtLjk2NiAwLTEuNzUtLjc5LTEuNzUtMS43NjRzLjc4NC0xLjc2NCAxLjc1LTEuNzY0IDEuNzUuNzkgMS43NSAxLjc2NC0uNzgzIDEuNzY0LTEuNzUgMS43NjR6bTEzLjUgMTIuMjY4aC0zdi01LjYwNGMwLTMuMzY4LTQtMy4xMTMtNCAwdjUuNjA0aC0zdi0xMWgzdjEuNzY1YzEuMzk2LTIuNTg2IDctMi43NzcgNyAyLjQ3NnY2Ljc1OXoiLz48L3N2Zz4=" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
+                LinkedIn
+              </a>
+            </td>
+            <td style="padding-right:8px;">
+              <a id="tInstagram" href="#" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;color:#F2F2F1;font-size:10px;font-weight:600;text-decoration:none;font-family:'Arial',sans-serif;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTEyIDIuMTYzYzMuMjA0IDAgMy41ODQuMDEyIDQuODUuMDcgMy4yNTIuMTQ4IDQuNzcxIDEuNjkxIDQuOTE5IDQuOTE5LjA1OCAxLjI2NS4wNjkgMS42NDUuMDY5IDQuODQ5IDAgMy4yMDUtLjAxMiAzLjU4NC0uMDY5IDQuODQ5LS4xNDkgMy4yMjUtMS42NjQgNC43NzEtNC45MTkgNC45MTktMS4yNjYuMDU4LTEuNjQ0LjA3LTQuODUuMDctMy4yMDQgMC0zLjU4NC0uMDEyLTQuODQ5LS4wNy0zLjI2LS4xNDktNC43NzEtMS42OTktNC45MTktNC45Mi0uMDU4LTEuMjY1LS4wNy0xLjY0NC0uMDctNC44NDkgMC0zLjIwNC4wMTMtMy41ODMuMDctNC44NDkuMTQ5LTMuMjI3IDEuNjY0LTQuNzcxIDQuOTE5LTQuOTE5IDEuMjY2LS4wNTcgMS42NDUtLjA2OSA0Ljg0OS0uMDY5ek0xMiAwQzguNzQxIDAgOC4zMzMuMDE0IDcuMDUzLjA3MkMyLjY5NS4yNzIuMjczIDIuNjkuMDczIDcuMDUyLjAxNCA4LjMzMyAwIDguNzQxIDAgMTJjMCAzLjI1OS4wMTQgMy42NjguMDcyIDQuOTQ4LjIgNC4zNTggMi42MTggNi43OCA2Ljk4IDYuOThDOC4zMzMgMjMuOTg2IDguNzQxIDI0IDEyIDI0YzMuMjU5IDAgMy42NjgtLjAxNCA0Ljk0OC0uMDcyIDQuMzU0LS4yIDYuNzgyLTIuNjE4IDYuOTc5LTYuOTguMDU5LTEuMjguMDczLTEuNjg5LjA3My00Ljk0OCAwLTMuMjU5LS4wMTQtMy42NjctLjA3Mi00Ljk0Ny0uMTk2LTQuMzU0LTIuNjE3LTYuNzgtNi45NzktNi45OEMxNS42NjguMDE0IDE1LjI1OSAwIDEyIDB6bTAgNS44MzhhNi4xNjIgNi4xNjIgMCAxMDAgMTIuMzI0IDYuMTYyIDYuMTYyIDAgMDAwLTEyLjMyNHpNMTIgMTZhNCA0IDAgMTEwLTggNCA0IDAgMDEwIDh6bTYuNDA2LTExLjg0NWExLjQ0IDEuNDQgMCAxMDAgMi44ODEgMS40NCAxLjQ0IDAgMDAwLTIuODgxeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
+                Instagram
+              </a>
+            </td>
+            <td>
+              <a id="tCalendly" href="#" style="display:inline-block;padding:6px 12px;background:#0F3F44;border-radius:6px;color:#F2F2F1;font-size:10px;font-weight:600;text-decoration:none;font-family:'Arial',sans-serif;">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iI0YyRjJGMSIgZD0iTTIwIDNoLTFWMWgtMnYySDdWMUg1djJINGMtMS4xIDAtMiAuOS0yIDJ2MTZjMCAxLjEuOSAyIDIgMmgxNmMxLjEgMCAyLS45IDItVjVjMC0xLjEtLjktMi0yLTJ6bTAgMThINFY4aDE2djEzek03IDEwaDEwdjJIN3YtMnptMCA0aDEwdjJIN3YtMnptMCA0aDd2Mkg3di0yeiIvPjwvc3ZnPg==" width="12" height="12" style="vertical-align:middle;margin-right:4px;">
+                Calendly
+              </a>
+            </td>
+          </tr></table>
+          <div id="tBrand" style="margin-top:14px;font-family:'Arial Black',sans-serif;font-size:11px;letter-spacing:-0.05em;color:#9FB3BA;"><b>Walt</b><span>re</span></div>
+        </td>
+      </tr>
+    </table>
+  </div>
 
   <script>
     const $ = id => document.getElementById(id);
@@ -550,38 +399,30 @@
       const calendly  = $('inCalendly').value.trim() || '#';
       const initials  = getInitials(name);
 
-      // PREVIEW
+      // Sincronizar textos
       $('sigName').textContent = name;
-      $('sigTitle').innerHTML = title.toUpperCase() + ' &nbsp;·&nbsp; Waltre';
-      $('sigEmail').textContent = email;
-      $('sigEmailLink').href = 'mailto:' + email;
-      $('sigPhone').textContent = phone;
-      $('sepPhone').style.display = phone ? 'inline' : 'none';
-      $('sigLinkedin').href = linkedin;
-      $('sigInstagram').href = instagram;
-      $('sigCalendly').href = calendly;
-
-      // TABLE
       $('tName').textContent = name;
+      $('sigTitle').innerHTML = title.toUpperCase() + ' &nbsp;·&nbsp; Waltre';
       $('tTitle').innerHTML = title.toUpperCase() + ' &nbsp;·&nbsp; Waltre';
+      $('sigEmail').textContent = email;
       $('tEmail').textContent = email;
-      $('tEmailLink').href = 'mailto:' + email;
+      $('sigPhone').textContent = phone;
       $('tPhone').textContent = phone;
+      $('sepPhone').style.display = phone ? 'inline' : 'none';
       $('tSepPhone').style.display = phone ? 'inline' : 'none';
-      $('tLinkedin').href = linkedin;
-      $('tInstagram').href = instagram;
-      $('tCalendly').href = calendly;
 
-      if (photoDataUrl) {
-        $('sigPhoto').innerHTML = `<img src="${photoDataUrl}" />`;
-        $('tPhotoCircle').innerHTML = `<img src="${photoDataUrl}" width="80" height="80" style="border-radius:50%;object-fit:cover;display:block;" />`;
-      } else {
-        $('sigPhoto').innerHTML = `<span>${initials}</span>`;
-        $('tPhotoCircle').innerHTML = `<span style="font-family:'Space Grotesk',Arial,sans-serif;font-size:24px;font-weight:700;color:#F2F2F1;">${initials}</span>`;
-      }
+      // Links
+      $('sigLinkedin').href = linkedin; $('tLinkedin').href = linkedin;
+      $('sigInstagram').href = instagram; $('tInstagram').href = instagram;
+      $('sigCalendly').href = calendly; $('tCalendly').href = calendly;
 
-      $('mockFrom').textContent = email;
-      $('photoInitials').textContent = initials;
+      // Foto
+      const photoHtml = photoDataUrl ? `<img src="${photoDataUrl}">` : initials;
+      const tablePhotoHtml = photoDataUrl ? `<img src="${photoDataUrl}" width="80" height="80" style="display:block;object-fit:cover;border-radius:50%;">` : `<span style="font-weight:700;color:#F2F2F1;font-size:24px;">${initials}</span>`;
+      
+      $('sigPhoto').innerHTML = photoHtml;
+      $('tPhotoCircle').innerHTML = tablePhotoHtml;
+      $('photoCircle').innerHTML = photoDataUrl ? `<img src="${photoDataUrl}" style="width:100%;height:100%;object-fit:cover;">` : initials;
     }
 
     ['inName','inTitle','inEmail','inPhone','inLinkedin','inInstagram','inCalendly'].forEach(id => {
@@ -591,10 +432,16 @@
     $('photoInput').addEventListener('change', function() {
       const file = this.files[0];
       if (!file) return;
+
+      if (file.size > 500000) {
+        alert("A imagem é muito grande! Escolha uma foto com menos de 500KB para evitar erros no Gmail.");
+        this.value = "";
+        return;
+      }
+
       const reader = new FileReader();
       reader.onload = e => {
         photoDataUrl = e.target.result;
-        $('photoCircle').innerHTML = `<img src="${photoDataUrl}" />`;
         update();
       };
       reader.readAsDataURL(file);
